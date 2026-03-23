@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="Free online pixel editor for Minecraft Bedrock custom fonts and glyphs. Draw Unicode characters, create custom glyph_E1 textures, and export PNG for PocketMine-MP resource packs. No install required.">
+  <meta name="keywords" content="minecraft bedrock glyph editor, pocketmine custom font, glyph_E1 editor, minecraft unicode font creator, bedrock edition font tool, pmmp custom characters, minecraft resource pack font, pixel art editor minecraft, pocketmine-mp tools, bedrock font generator">
+  <meta name="author" content="w1zardz">
+  <meta name="theme-color" content="#0d1117">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Bedrock Glyph Drawer — Custom Font Editor for Minecraft">
+  <meta property="og:description" content="Free online tool to draw custom glyphs and Unicode characters for Minecraft Bedrock Edition. Export PNG for PocketMine-MP resource packs.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://w1zardz.github.io/bedrock-glyph-drawer/">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Bedrock Glyph Drawer — Minecraft Font Editor">
+  <meta name="twitter:description" content="Draw custom glyphs for Minecraft Bedrock. Export PNG for PocketMine-MP resource packs.">
+
+  <link rel="canonical" href="https://w1zardz.github.io/bedrock-glyph-drawer/">
+  <title>Bedrock Glyph Drawer — Custom Font & Unicode Editor for Minecraft | PocketMine-MP Tool</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Top Bar -->
+    <header id="topbar">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <span class="brand-name">glyph-drawer</span>
+        <span class="brand-ver">v1.0</span>
+      </div>
+      <div class="topbar-actions">
+        <button id="btnUndo" class="icon-btn" title="Undo (Ctrl+Z)" disabled>
+          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12.5 8c-2.65 0-5.05 1.04-6.83 2.73L3 8v9h9l-2.83-2.83A7.96 7.96 0 0 1 12.5 12c3.13 0 5.83 1.81 7.15 4.43l2.05-.85C20.02 12.07 16.58 8 12.5 8z" fill="currentColor"/></svg>
+        </button>
+        <button id="btnRedo" class="icon-btn" title="Redo (Ctrl+Shift+Z)" disabled>
+          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M18.4 10.6C16.55 9 14.15 8 11.5 8c-4.08 0-7.52 4.07-9.15 7.58l2.05.85C5.67 13.81 8.37 12 11.5 12c1.62 0 3.11.55 4.33 1.46L13 16.29h9V8l-3.6 2.6z" fill="currentColor"/></svg>
+        </button>
+        <div class="separator"></div>
+        <button id="btnGrid" class="icon-btn active" title="Toggle Grid">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM8 20H4v-4h4v4zm0-6H4v-4h4v4zm0-6H4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4z" fill="currentColor"/></svg>
+        </button>
+        <button id="btnTheme" class="icon-btn" title="Toggle Theme">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.4 5.4 0 0 1-4.9 2.86 5.5 5.5 0 0 1-5.5-5.5c0-1.95 1.03-3.67 2.56-4.64A8.9 8.9 0 0 0 12 3z" fill="currentColor"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main">
+      <!-- Toolbar (left on desktop, bottom on mobile) -->
+      <aside id="toolbar">
+        <button class="tool-btn active" data-tool="pencil" title="Pencil (B)">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" fill="currentColor"/></svg>
+        </button>
+        <button class="tool-btn" data-tool="eraser" title="Eraser (E)">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M16.24 3.56l4.95 4.94c.78.79.78 2.05 0 2.84L12 20.53a4 4 0 0 1-2.83 1.17H4.59l-1.3 1.3-1.42-1.42L20.47 2.97l1.42 1.42-5.65 5.66zM4.17 19.7h4a2 2 0 0 0 1.41-.59l2.13-2.12-4.95-4.95-4 4a2 2 0 0 0 0 2.83l1.42 1.41z" fill="currentColor"/></svg>
+        </button>
+        <button class="tool-btn" data-tool="fill" title="Fill (G)">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M16.56 8.94L7.62 0 6.21 1.41l2.38 2.38-5.15 5.15a1.49 1.49 0 0 0 0 2.12l5.5 5.5c.29.29.68.44 1.06.44s.77-.15 1.06-.44l5.5-5.5c.59-.58.59-1.53 0-2.12zM5.21 10L10 5.21 14.79 10H5.21zM19 11.5s-2 2.17-2 3.5c0 1.1.9 2 2 2s2-.9 2-2c0-1.33-2-3.5-2-3.5z" fill="currentColor"/></svg>
+        </button>
+        <button class="tool-btn" data-tool="eyedropper" title="Eyedropper (I)">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M20.71 5.63l-2.34-2.34a1 1 0 0 0-1.41 0l-3.12 3.12-1.41-1.42-1.42 1.42 1.42 1.41-8.02 8.02c-.18.18-.29.43-.29.71V20h3.45c.27 0 .52-.11.71-.29l8.02-8.02 1.41 1.42 1.42-1.42-1.42-1.41 3.12-3.12a1 1 0 0 0-.12-1.53zM6.92 18H5v-1.92l8.02-8.02 1.92 1.92L6.92 18z" fill="currentColor"/></svg>
+        </button>
+        <button class="tool-btn" data-tool="line" title="Line (L)">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M19.71 4.29a1 1 0 0 0-1.42 0L4.29 18.29a1 1 0 1 0 1.42 1.42L19.71 5.71a1 1 0 0 0 0-1.42z" fill="currentColor"/></svg>
+        </button>
+        <button class="tool-btn" data-tool="rect" title="Rectangle (R)">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M3 3h18v18H3V3zm2 2v14h14V5H5z" fill="currentColor"/></svg>
+        </button>
+      </aside>
+
+      <!-- Canvas Area -->
+      <div id="canvas-wrap">
+        <canvas id="canvas"></canvas>
+      </div>
+
+      <!-- Props Panel (right on desktop, modal on mobile) -->
+      <aside id="props">
+        <button id="propsToggle" class="props-toggle">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/></svg>
+        </button>
+
+        <div class="props-inner">
+          <!-- Size -->
+          <section class="panel">
+            <h3 class="panel-title" data-collapse="size">Canvas Size</h3>
+            <div class="panel-body" id="panelSize">
+              <div class="size-pills">
+                <button class="pill" data-size="16">16</button>
+                <button class="pill active" data-size="32">32</button>
+                <button class="pill" data-size="64">64</button>
+                <button class="pill" data-size="128">128</button>
+              </div>
+              <div class="size-custom">
+                <label>Custom:</label>
+                <input type="number" id="customSize" min="2" max="512" step="2" value="32">
+                <button class="btn-sm" id="applySize">Apply</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Colors -->
+          <section class="panel">
+            <h3 class="panel-title" data-collapse="colors">Colors</h3>
+            <div class="panel-body" id="panelColors">
+              <div id="palette" class="palette"></div>
+              <div class="color-input">
+                <input type="color" id="colorPicker" value="#ffffff">
+                <input type="text" id="colorHex" value="#ffffff" maxlength="7" spellcheck="false">
+                <button class="btn-sm" id="addColor" title="Add to palette">+</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Export / Import -->
+          <section class="panel">
+            <h3 class="panel-title" data-collapse="export">Export / Import</h3>
+            <div class="panel-body" id="panelExport">
+              <div class="export-row">
+                <label>Scale:</label>
+                <div class="scale-pills">
+                  <button class="pill active" data-scale="1">1x</button>
+                  <button class="pill" data-scale="2">2x</button>
+                  <button class="pill" data-scale="4">4x</button>
+                  <button class="pill" data-scale="8">8x</button>
+                  <button class="pill" data-scale="16">16x</button>
+                </div>
+              </div>
+              <button class="btn" id="btnExport">Export PNG</button>
+              <div id="dropZone" class="drop-zone">
+                <span>Drop PNG here or click</span>
+                <input type="file" id="fileInput" accept="image/png" hidden>
+              </div>
+            </div>
+          </section>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Status Bar -->
+    <footer id="statusbar">
+      <span id="statusSize">32x32</span>
+      <span id="statusCoord"></span>
+      <span id="statusColor" class="status-color"></span>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toasts"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
